@@ -18,4 +18,4 @@ CREATE TABLE `test`.`books`(
 );
 
 -- Retrieving all records from the 'books' table
-SELECT * FROM books;
+SELECT * FROM books limit 20;
