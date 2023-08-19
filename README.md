@@ -1,6 +1,6 @@
 # Fullstack Seminar Project
 
-This project includes a frontend client and a Node.js backend.
+This project includes a React frontend client and a Node.js backend.
 
 ## Getting Started
 
