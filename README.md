@@ -37,6 +37,6 @@ npm start
 ### 6. Access the app at:
 
 - Frontend: http://localhost:3000
-- Backend (API): http://localhost:3001
+- Backend (API): http://localhost:8800
 
 Happy coding!
