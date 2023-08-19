@@ -36,7 +36,7 @@ npm start
 
 5. Access the app at:
 
--Frontend: http://localhost:3000
--Backend (API): http://localhost:3001
+- Frontend: http://localhost:3000
+- Backend (API): http://localhost:3001
 
 Happy coding!
