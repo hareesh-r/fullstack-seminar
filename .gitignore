@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Package lock file
+package-lock.json
+
+# Compiled files
+/build/
+/dist/
+/.next/
+
+# Dependencies
+/.pnp/
+.pnp.js
+
+# Testing
+/coverage/
+
+# IDEs and editors
+/.idea/
+/.vscode/
+*.code-workspace
+
+# Logs
+*.log
+
+# Compiled output
+*.min.js
+*.min.css
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
