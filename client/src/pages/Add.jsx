@@ -1,6 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Add = () => {
@@ -10,7 +9,7 @@ const Add = () => {
     price: null,
     cover: "",
   });
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,15 +17,16 @@ const Add = () => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:8800/books", book);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-      setError(true)
-    }
+    axios.post("http://localhost:8800/books", book)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(true);
+      });
   };
 
   return (

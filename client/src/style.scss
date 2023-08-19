@@ -14,7 +14,7 @@
     margin-top: 20px;
     cursor: pointer;
     border: none;
-    background-color: teal;
+    background-color: #000f80;
     color: white;
     font-weight: bold;
   }
@@ -39,19 +39,6 @@
         object-fit: cover;
       }
 
-      button {
-        padding: 3px 6px;
-        background-color: white;
-        cursor: pointer;
-      }
-      .delete {
-        border: 1px solid rgb(245, 191, 191);
-        color: rgb(242, 100, 100);
-      }
-      .update {
-        border: 1px solid rgb(204, 204, 243);
-        color: rgb(139, 139, 234);
-      }
     }
   }
 
@@ -74,12 +61,18 @@
       border: none;
       padding: 10px;
       background-color: white;
-      background-color: teal;
+      background-color: #000f80;
       color: white;
       font-weight: bold;
       cursor: pointer;
     }
   }
+}
+.book-bottom {
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 .button-grp {
   display: flex;
@@ -88,7 +81,78 @@
 .books,.button-grp {
   gap: 20px;
 }
-.book-price {
-  margin-bottom: 20px;
-  padding: 20px;
+
+body {
+  background-image: linear-gradient(to right, #33001b, #ff0084); 
+  color: white;
 }
+
+
+
+.delete-button,.update-button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+ }
+ 
+ .delete-button, .delete-button span,.update-button,.update-button span {
+  transition: 200ms;
+ }
+ 
+ .delete-button .text,.update-button .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .delete-button .icon,.update-button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .delete-button svg,.update-button svg{
+  width: 15px;
+  fill: #eee;
+ }
+ 
+ .delete-button:hover, .update-button:hover {
+  background: #ff3636;
+ }
+ 
+ .delete-button:hover .text{
+  color: transparent;
+ }
+
+ 
+ .delete-button:hover .icon ,.update-button .icon{
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+ 
+ .delete-button:focus,.update-button:focus {
+  outline: none;
+ }
+ 
+ .delete-button:active .icon svg,.update-button .icon svg {
+  transform: scale(0.8);
+ }
+
+
+ a {
+  text-decoration: none;
+  color: white;
+ }
