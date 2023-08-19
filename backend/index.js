@@ -1,10 +1,10 @@
-import express from "express"; // Importing the Express framework
-import mysql from "mysql"; // Importing the MySQL library
-import cors from "cors"; // Importing the CORS middleware
+import express from "express";
+import mysql from "mysql";
+import cors from "cors";
 
-const app = express(); // Creating an Express app
-app.use(cors()); // Using CORS middleware to enable cross-origin requests
-app.use(express.json()); // Using Express to parse JSON in requests
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -13,11 +13,12 @@ const db = mysql.createConnection({
   database: "test",
 });
 
+// Root endpoint
 app.get("/", (req, res) => {
   res.json("Hello Hareesh!");
 });
 
-// Handling GET request for fetching books
+// Fetch all books
 app.get("/books", (req, res) => {
   const q = "SELECT * FROM books";
   db.query(q, (err, data) => {
@@ -29,7 +30,26 @@ app.get("/books", (req, res) => {
   });
 });
 
-// Handling POST request to add a new book
+// Fetch a specific book by ID
+app.get("/books/:id", (req, res) => {
+  const bookId = req.params.id;
+  const q = "SELECT * FROM books WHERE id = ?";
+
+  db.query(q, [bookId], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.json(err);
+    }
+
+    if (data.length === 0) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    return res.json(data[0]);
+  });
+});
+
+// Add a new book
 app.post("/books", (req, res) => {
   const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
 
@@ -46,10 +66,10 @@ app.post("/books", (req, res) => {
   });
 });
 
-// Handling DELETE request to remove a book
+// Remove a book
 app.delete("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const q = " DELETE FROM books WHERE id = ? ";
+  const q = "DELETE FROM books WHERE id = ?";
 
   db.query(q, [bookId], (err, data) => {
     if (err) return res.send(err);
@@ -57,7 +77,7 @@ app.delete("/books/:id", (req, res) => {
   });
 });
 
-// Handling PUT request to update a book
+// Update a book
 app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
   const q =
@@ -76,7 +96,7 @@ app.put("/books/:id", (req, res) => {
   });
 });
 
-// Starting the server on port 8800
+// Start the server on port 8800
 app.listen(8800, () => {
   console.log("Connected to backend.");
 });
