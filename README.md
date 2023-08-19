@@ -4,9 +4,10 @@ This project includes a frontend client and a Node.js backend.
 
 ## Getting Started
 
-1. Clone the repository:
+1. Clone the repository and Navigate to the Repository:
 ```bash
 git clone https://github.com/your-username/fullstack-seminar.git
+cd fullstack-seminar
 ```
 
 2. Install frontend dependencies:
