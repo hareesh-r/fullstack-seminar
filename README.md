@@ -4,13 +4,13 @@ This project includes a frontend client and a Node.js backend.
 
 ## Getting Started
 
-1. Clone the repository and Navigate to the Repository:
+1. Clone the repository and Navigate to the Repository, Run this in a new Folder:
 ```bash
 git clone https://github.com/your-username/fullstack-seminar.git
 cd fullstack-seminar
 ```
 
-2. Install frontend dependencies:
+2. Install frontend dependencies (You're in fullstack-seminar folder):
 
 ```bash
 cd client
@@ -21,10 +21,10 @@ npm install
 ```bash
 npm start
 ```
-4. Install backend dependencies:
+4. Install backend dependencies (You're in fullstack-seminar folder):
 
 ```bash
-cd ../backend
+cd backend
 npm install
 ```
 
