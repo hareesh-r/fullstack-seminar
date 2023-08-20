@@ -42,4 +42,8 @@ npm start
 - Backend (API): http://localhost:8800
 - Postman API Collection: [Link](https://api.postman.com/collections/15702353-f2f54e22-1b3f-4ab5-aa9a-840dc74c812e?access_key=PMAT-01H891552PFWT4T7N40NNDFAQF)
 
+### 7. Reference Links:
+- Open API Specification: [Link](https://swagger.io/specification/)
+- Error Handling best practices : [Link](https://www.baeldung.com/rest-api-error-handling-best-practices#handling)
+- Response Codes and Meaning: [Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 Happy coding!
