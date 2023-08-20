@@ -2,6 +2,8 @@
 
 This project includes a React frontend client and a Node.js backend.
 
+Presentation Link: [Canva](https://www.canva.com/design/DAFsDBxWCfw/sDAytX54lp88zVoD1DrLRA/view?utm_content=DAFsDBxWCfw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+
 ## Getting Started
 
 ### 1. Clone the repository and Navigate to the Repository, Run this in a new Folder:

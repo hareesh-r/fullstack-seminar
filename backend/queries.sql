@@ -1,4 +1,5 @@
 -- Changing the password for the 'root' user
+-- If you want to change the password to something else you can use the same command
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
 
 -- Creating a new database named 'test'
