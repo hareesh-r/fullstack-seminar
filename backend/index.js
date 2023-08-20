@@ -1,11 +1,16 @@
+// Import required libraries
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
 
+// Create an Express app
 const app = express();
+
+// Use CORS and parse JSON requests
 app.use(cors());
 app.use(express.json());
 
+// Create a MySQL database connection
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -13,36 +18,36 @@ const db = mysql.createConnection({
   database: "test",
 });
 
-// Root endpoint
+// Route for the root URL
 app.get("/", (req, res) => {
   res.json("Hello Hareesh!");
 });
 
-// Fetch all books
+// Get all books
 app.get("/books", (req, res) => {
-  const q = "SELECT * FROM books";
-  db.query(q, (err, data) => {
+  const query = "SELECT * FROM books";
+  db.query(query, (err, data) => {
     if (err) {
-      console.log(err);
-      return res.json(err);
+      console.error(err);
+      return res.status(500).json({ error: "Internal Server Error", message: err.message });
     }
     return res.json(data);
   });
 });
 
-// Fetch a specific book by ID
+// Get a specific book by ID
 app.get("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const q = "SELECT * FROM books WHERE id = ?";
+  const query = "SELECT * FROM books WHERE id = ?";
 
-  db.query(q, [bookId], (err, data) => {
+  db.query(query, [bookId], (err, data) => {
     if (err) {
-      console.log(err);
-      return res.json(err);
+      console.error(err);
+      return res.status(500).json({ error: "Internal Server Error", message: err.message });
     }
 
     if (data.length === 0) {
-      return res.status(404).json({ message: "Book not found" });
+      return res.status(404).json({ error: "Not Found", message: "Book not found" });
     }
 
     return res.json(data[0]);
@@ -51,7 +56,7 @@ app.get("/books/:id", (req, res) => {
 
 // Add a new book
 app.post("/books", (req, res) => {
-  const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
+  const query = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
 
   const values = [
     req.body.title,
@@ -60,27 +65,27 @@ app.post("/books", (req, res) => {
     req.body.cover,
   ];
 
-  db.query(q, [values], (err, data) => {
-    if (err) return res.send(err);
-    return res.json(data);
+  db.query(query, [values], (err, data) => {
+    if (err) return res.status(500).json({ error: "Internal Server Error", message: err.message });
+    return res.status(201).json(data);
   });
 });
 
-// Remove a book
+// Delete a book by ID
 app.delete("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const q = "DELETE FROM books WHERE id = ?";
+  const query = "DELETE FROM books WHERE id = ?";
 
-  db.query(q, [bookId], (err, data) => {
-    if (err) return res.send(err);
-    return res.json(data);
+  db.query(query, [bookId], (err, data) => {
+    if (err) return res.status(500).json({ error: "Internal Server Error", message: err.message });
+    return res.status(204).send();
   });
 });
 
-// Update a book
+// Update a book by ID
 app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
-  const q =
+  const query =
     "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?, `cover`= ? WHERE id = ?";
 
   const values = [
@@ -90,13 +95,16 @@ app.put("/books/:id", (req, res) => {
     req.body.cover,
   ];
 
-  db.query(q, [...values, bookId], (err, data) => {
-    if (err) return res.send(err);
-    return res.json(data);
+  db.query(query, [...values, bookId], (err, data) => {
+    if (err) return res.status(500).json({ error: "Internal Server Error", message: err.message });
+    if (data.affectedRows === 0) {
+      return res.status(404).json({ error: "Not Found", message: "Book not found" });
+    }
+    return res.status(200).json(data);
   });
 });
 
-// Start the server on port 8800
+// Start the Express app on port 8800
 app.listen(8800, () => {
   console.log("Connected to backend.");
 });
