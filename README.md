@@ -1,4 +1,4 @@
-# Fullstack Seminar Project
+# Fullstack Seminar Project Live
 
 This project includes a React frontend client and a Node.js backend.
 
