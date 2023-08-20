@@ -40,6 +40,6 @@ npm start
 
 - Frontend: http://localhost:3000
 - Backend (API): http://localhost:8800
-- Postman API Collection: (Link)[https://api.postman.com/collections/15702353-f2f54e22-1b3f-4ab5-aa9a-840dc74c812e?access_key=PMAT-01H891552PFWT4T7N40NNDFAQF]
+- Postman API Collection: [Link](https://api.postman.com/collections/15702353-f2f54e22-1b3f-4ab5-aa9a-840dc74c812e?access_key=PMAT-01H891552PFWT4T7N40NNDFAQF)
 
 Happy coding!
