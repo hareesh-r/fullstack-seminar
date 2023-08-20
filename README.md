@@ -8,7 +8,7 @@ Presentation Link: [Canva](https://www.canva.com/design/DAFsDBxWCfw/sDAytX54lp88
 
 ### 1. Clone the repository and Navigate to the Repository, Run this in a new Folder:
 ```bash
-git clone https://github.com/your-username/fullstack-seminar.git
+git clone https://github.com/hareesh-r/fullstack-seminar.git
 cd fullstack-seminar
 ```
 
